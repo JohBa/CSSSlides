@@ -1,16 +1,9 @@
 
 # CSS
 
-- https://www.w3schools.com/html/html_css.asp
-- https://www.w3schools.com/css/
-- https://www.w3schools.com/cssref/
-- https://de.wikipedia.org/wiki/Cascading_Style_Sheets
-- https://css-tricks.com/the-difference-between-id-and-class/
-- https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-
-# SASS
-- https://sass-lang.com/guide
-- https://sass-lang.com/documentation/file.SASS_REFERENCE.html
-- https://vanseodesign.com/css/custom-sass-functions/
-
-# BULMA & FULMA
+- https://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/
+- https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
+- https://clubmate.fi/oocss-acss-bem-smacss-what-are-they-what-should-i-use/#Block_Element_Modifier_BEM
+- https://medium.freecodecamp.org/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849
+- http://getbem.com/introduction/
+- https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/ 

@@ -10,337 +10,218 @@
 
 <img style="border-style: none" border="0" src="images/AIT-Logo_small.jpg" />
 
-### **Johannes Baeurle & Jan Reinhardt**, AIT GmbH <br /> [@JoBaeurle](http://twitter.com/JoBaeurle) | [github JohBa](https://github.com/JohBa) | [aitgmbh.de](http://www.aitgmbh.de/)
+### **Katherina Ringwald & Johannes Baeurle**, AIT GmbH <br /> [@JoBaeurle](http://twitter.com/JoBaeurle) | [github JohBa](https://github.com/JohBa) | [aitgmbh.de](http://www.aitgmbh.de/)
 
 ***
 
 ### Roadmap
 
- - **CSS**
- - SASS
- - B/Fulma
+ - **Naming Conventions**
+ - Structure
+ - Debugging
 
 ---
 
-### CSS
+### Naming Conventions
 
-**C**ascading **S**tyle **S**heets
+#### Why?
 
-CSS describes how HTML elements are to be displayed on screen, paper, or in other media.
+* Maintainable Code
+* Easier to read
+* Relationships between blocks
+* Connection to JavaScript hooks?
 
----
-
-### Add CSS
-
-#### Inline
-
-```html
-<p style="color:blue;">This is a Blue Paragraph</p>
-```
-
-<p style="color:blue;">This is a Blue Paragraph</p>
+' Naming is hard, so why do it?
 
 ---
 
-### Add CSS
+### Naming Conventions/Concepts
 
-#### Internal
+* **BEM**
+* OOCSS
+* ACSS
+* SMACSS
 
-```html
-<style>
-h1   {color: blue;}
-p    {color: red;}
-</style>
-```
-
-<h1 class="sample1">This is a heading</h1>
-<p class="sample1">This is a paragraph.</p>
+' Object oriented CSS
+' Atomic CSS (Atomic Design)
+' Scalable and Modular Architecture for CSS
 
 ---
 
-### Add CSS
+### BEM
 
-#### External
+<h4 style="color:#76b24f">Block</h4>
+Standalone entity that is meaningful on its own.
+(`header`, `container`, `menu`, `checkbox`, `input`)
 
-```html
-<head>
-  <link rel="stylesheet" href="styles.css">
-</head>
-```
+<h4 style="color:#4f91b2">Element</h4>
+A part of a block that has no standalone meaning and is semantically tied to its block.
+(`menu item`, `list item`, `checkbox caption`, `header title`)
+
+<h4 style="color:#d5635d">Modifier</h4>
+A flag on a block or element. Use them to change appearance or behavior.
+(`disabed`, `highlighted`, `checked`, `fixed`, `size big`, ...)
 
 ---
 
-### Syntax
+### BEM
+
+<img style="border-style: none" border="0" width="850" src="images/bemsample.jpg" />
+
+
+---
+
+### BEM
+
+Block__Element--Modifier
 
 ```css
-Selector1 [, Selector2 [, …] ] {
-    Key-1: Value-1;
-    …
-    Key-n: Value-n[;]
+/* This is the Block */
+.block {}
+
+/* This is an element, that helps to form the block as a whole */
+.block__element {}
+
+/* This modifies the element or a block*/
+.block--modifier {}
+```
+
+---
+
+### BEM
+
+#### Don't
+
+Don't mimic the DOM-Tree!
+
+```html
+<header class="block">
+    <h1 class="block__elem1">
+        <a class="block__elem2" href="/">clubmate.fi</a>
+    </h1>
+</header>
+```
+
+---
+
+### BEM
+
+#### Do
+
+Create the BEM-Tree!
+
+```html
+<div class='block'>
+    <div class='block__elem1'>
+        <div class='block__elem2'></div>
+    </div>
+</div>
+
+<div class='block1'>
+    <div class='block2'>
+        <div class='block2__elem'></div>
+    </div>
+</div>
+```
+
+---
+
+### BEM Real World
+
+```html
+<!-- Block -->
+<header class="col-header">
+    <!-- Block element -->
+    <h1 class="col-header__heading">
+        <a class="col-header__link" href="/">clubmate.fi</a>
+    </h1>
+    <!-- Block element -->
+    <span class="col-header__beta">(beta)</span>
+    <!-- New Block -->
+    <nav class="nav">
+        <!-- Block element -->
+        <a class="nav__item" href="/">Home</a>
+        <!-- Block element -->
+        <a class="nav__item" href="/archives">Archives</a>
+        <!-- Element and a modifier -->
+        <a class="nav__item nav__item--uplink" href="#header">&uarr;</a>
+    </nav>
+</header>
+```
+
+---
+
+### BEM Sample: Block
+
+
+<img style="border-style: none" border="0" width="450" src="images/stickman.png" />
+
+```css
+.stick-man {
+  
+ }
+```
+
+---
+
+### BEM Sample: Elements
+
+
+<img style="border-style: none" border="0" width="450" src="images/stickman_2.png" />
+
+```css
+.stick-man__head {
+}
+.stick-man__arms {
+}
+.stick-man__feet {
 }
 ```
 
-https://www.w3schools.com/cssref/
-
 ---
 
-### Selectors
+### BEM Sample: Modifiers
 
-<img src="images/selectors.png" style="background: white;" width=500 />
-<a href="https://www.w3schools.com/cssref/css_selectors.asp">https://www.w3schools.com/cssref/css_selectors.asp</a>
 
----
-
-### IDs
-
-- Each element can have only one ID
-- Each page can have only one element with that ID
-- Anchor on webpage (e.g. http://url.com#firstname)
+<img style="border-style: none" border="0" width="450" src="images/stickman_3.png" />
 
 ```css
-#firstname {
-  color: yellow;
+.stick-man--blue {
+}
+.stick-man--red {
 }
 ```
 
-```html
-<span id="firstname">Firstname</span>
-```
-
-<span id="firstname">Firstname</span>
-
-' spezielle browserfunktionalität, anker auf webseite
-' bei Eingabe URL scrollt automatisch zu Element mit ID
-
 ---
 
-### Classes
+### BEM Sample: Modifiers
 
-- You can use the same class on multiple elements.
-- You can use multiple classes on the same element.
-- Classes and Ids
+<img style="border-style: none" border="0" width="450" src="images/stickman_4.png" />
 
 ```css
-.widget { background-color: purple; }
-.widget2 { border: 1px dashed white !important; }
-```
-
-```html
-<div class="widget">Widget</div>
-<div class="widget widget2">Widget</div>
-<div class="widget" id="firstname">Widget with id</div>
-```
-
-<div class="widget">Widget</div>
-<div class="widget widget2">Widget</div>
-<div class="widget" id="firstname">Widget with id</div>
-
-' Analogie barcode und seriennummer
-' barcode für produktfamilie, gibt preis und art produkt an
-' seriennummer für einzelnes objekt zur identifikation
-
----
-
-### element element
-
-```css
-div .inside {
-  background-color: green;
+.stick-man__head--small {
+}
+.stick-man__head--big {
 }
 ```
 
-```html
-<div>
-  <div class="inside">Inside</div>
-</div>
-```
-
-<div>
-  <div class="inside">Inside</div>
-</div>
-
-' Selects all "inside" elements inside "div" elements
-' tiefe egal, daher hier schlecht zeigbar
-
 ---
 
-### element > element
+### JavaScrip Hooks?
 
-```css
-.parent { border: 1px solid white }
-.parent > .child { background-color: green; }
-```
+* CSS Classes/Ids as hooks for JavaScript code
 
 ```html
-<div class="parent">
-  <div class="inner">Inside</div>
-  <span class="child">Child</span>
-</div>
-<div><span class="child">Child</span></div>
-```
-
-<div class="parent">
-  <div class="inner">Inside</div>
-  <span class="child">Child</span>
-</div>
-<div><span class="child">Child</span></div>
-
-' Selects all "child" elements where the parent is a "parent" element
-
----
-
-### :hover
-
-```css
-.hoversample:hover { background-color: green; }
-```
-
-```html
-<div>
-  <span class="hoversample">Child</span>
+<div class="site-navigation js-site-navigation">
 </div>
 ```
 
-<div>
-  <span class="hoversample">Child</span>
-</div>
-
----
-
-### ::after ::before
-
-```css
-.aftersample::after { content: "after"; }
-.beforesample::before { content: "before"; }
+```js
+const nav = document.querySelector('.js-site-navigation')
 ```
 
-```html
-<div>
-  <p class="aftersample">Container</p>
-  <p class="beforesample">Container</p>
-</div>
-```
-
-<div>
-  <p class="aftersample">Container</p>
-  <p class="beforesample">Container</p>
-</div>
-
----
-
-### :nth-child()
-
-```css
-.altlist li:nth-child(2n) { background-color: gray; }
-```
-
-```html
-<ul class="altlist">
-  <li>item</li>
-  <li>item</li>
-  <li>item</li>
-  <li>item</li>
-</ul>
-```
-
-<ul class="altlist">
-  <li>item</li>
-  <li>item</li>
-  <li>item</li>
-  <li>item</li>
-</ul>
-
----
-
-### transition
-
-```css
-.transition {
-  width: 100px;height: 100px; background: red;
-  transition: width 2s; -webkit-transition: width 2s;
-}
-.transition:hover { width: 300px; }
-```
-
-```html
-<div class="transition"></div>
-```
-
-<div class="transition"></div>
-
-' Browsersupport beachten!
-
----
-
-### Display
-
-```css
-.inline { display: inline; }
-.block { display: block; }
-.inline-block { display: inline-block; }
-```
-
-<div style="border:1px dashed white !important">
-Lorem ipsum dolor sit amet <p class="inline">INLINE!</p> Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.
-</div>
-<div style="border:1px dashed white !important">
-Lorem ipsum dolor sit amet<p class="block">BLOCK!</p> Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.
-</div>
-<div style="border:1px dashed white !important">
-Lorem ipsum dolor sit amet <p class="inline-block">INLINE-BLOCK!</p> Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.
-</div>
-
----
-
-### Flexbox
-
-```css
-.flexcontainer { display: flex; flex-direction: row; flex-wrap: wrap; }
-.flexblock { background: green; border: 1px solid white; }
-```
-
-```html
-<div class="flexcontainer">
-  <div class="flexblock"></div>
-  <div class="flexblock"></div>
-  <div class="flexblock"></div>
-  <div class="flexblock"></div>
-</div>
-```
-
-<div class="flexcontainer">
-  <div class="flexblock"></div>
-  <div class="flexblock"></div>
-  <div class="flexblock"></div>
-  <div class="flexblock"></div>
-</div>
-
-Einführung unter https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-
-Demo!
-
-' Demo zeigen...
-
----
-
-### Browser support
-
-<img src="images/browsersupport.png" style="background: white;" width=550 />
-<a href="https://www.w3schools.com/cssref/css3_browsersupport.asp">https://www.w3schools.com/cssref/css3_browsersupport.asp</a>
-<a href="https://caniuse.com">https://caniuse.com</a>
-
----
-
-### Limitations
-
-- own functions?
-- variables?
-- inheritance?
-
-<img src="images/varsupport.png" style="background: white;" width=550 />
-
-' css ist limitiert
-' sass/scss (preprocessor) als lösung
+' Hooks als Mittel für javascript selectors
+' wenn möglich ohne styling, falls nötig vorschlag: suffix js
 
 ---
 
@@ -348,162 +229,98 @@ Demo!
 
 ### Roadmap
 
- - CSS
- - **SASS**
- - B/Fulma
+ - Naming Conventions
+ - **Structure**
+ - Debugging
 
 ---
 
-### Syntactically Awesome StyleSheets
+### ITCSS
 
-(or SCSS -> other syntax)
+Inverted Triangle CSS
 
-- preprocessor
-- variables
-- nesting
-- mixins
-- own functions
-- extend/inheritance
+<img style="border-style: none" border="0" src="images/itcss.svg" />
 
 ---
 
-### Variables
+### ITCSS
 
-```css
-$font-stack:    Helvetica, sans-serif
-$primary-color: #333
+#### Settings
+used with preprocessors and contain font, colors definitions, etc.
 
-body
-  font: 100% $font-stack
-  color: $primary-color
-```
+#### Tools
+globally used mixins and functions. It’s important not to output any CSS in the first 2 layers.
 
----
-
-### Nesting
-
-```css
-nav
-  ul
-    margin: 0
-    padding: 0
-    list-style: none
-
-  li
-    display: inline-block
-```
-
-```css
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-nav li {
-  display: inline-block;
-}
-```
+#### Generic
+reset and/or normalize styles, box-sizing definition, etc. This is the first layer which generates actual CSS.
 
 ---
 
-### Mixins
+### ITCSS
 
-```css
-=transform($property)
-  -webkit-transform: $property
-  -ms-transform:     $property
-  transform:         $property
+#### Elements
+styling for bare HTML elements (like H1, A, etc.). These come with default styling from the browser so we can redefine them here.
 
-.box
-  +transform(rotate(30deg))
-```
-
-```css
-.box {
-  -webkit-transform: rotate(30deg);
-  -ms-transform: rotate(30deg);
-  transform: rotate(30deg);
-}
-```
+#### Objects
+class-based selectors which define undecorated design patterns, for example media object (img etc.)
 
 ---
 
-### Own functions
+### ITCSS
 
-```css
-$random = 2
+#### Components
+specific UI components. This is where majority of our work takes place and our UI components are often composed of Objects and Components
 
-@function column-width($col, $total:8) {  
- @return percentage($col/($total+$random));  
-}
-
-.col-3
- width: column-width(3, 8);  
-
-```
-
-```css
-.col-3 {  
- width: 30%;  
-}
-```
+#### Utilities
+utilities and helper classes with ability to override anything which goes before in the triangle, eg. hide helper class
 
 ---
 
-### Extend/inheritance
+### How?
 
-```css
-%message-shared
-  border: 1px solid #ccc
-  color: #333
+* Folder structure
+* Selector Prefixes (`o-`, `c-`, `u-`, `has-`, `is-`, ...)
+* Filenames (`object.media.scss`, `component.header.scss`, ...)
 
-.message
-  @extend %message-shared
-
-.success
-  @extend %message-shared
-  border-color: green
-```
-
-```css
-.message, .success {
-  border: 1px solid #cccccc;
-  color: #333;
-}
-
-.success {
-  border-color: green;
-}
-```
+' Vorteile bei Selector Prefixes, "Healtchecks" über eigene CSS Regeln möglich
+' In ecoPage bislang über Folder Structure
 
 ---
 
-### SCSS
 
-- other (verbose) syntax
+***
 
-```css
-=transform($property)
-  -webkit-transform: $property
-  -ms-transform:     $property
-  transform:         $property
+### Roadmap
 
-.box
-  +transform(rotate(30deg))
-```
+ - Naming Conventions
+ - Structure
+ - **Debugging**
 
-```css
-@mixin transform($property) {
-  -webkit-transform: $property;
-      -ms-transform: $property;
-          transform: $property;
-}
+---
 
-.box { @include transform(rotate(30deg)); }
-```
+### Debugging CSS
 
-' klammern, semikolon, teils einfache symbole statt wörter
+Debugging is hard...
+
+<img style="border-style: none" border="0" src="images/css.gif" />
+
+' CSS is permissive, gibt nach
+' Wenn was nicht passt wirds einfach ignoriert
+
+---
+
+### Debugging CSS
+
+#### Debugging strategies
+
+* Browser Developer Tools
+* IDE Syntax Verification (InBuilt, Extensions, ...)
+* [StyleLint](https://github.com/webpack-contrib/stylelint-webpack-plugin)/[CSSLint](https://github.com/CSSLint/csslint)
+* Globale CSS Selectoren
+
+' firefox nightly developer tools zeigen
+' grid zeigen
+' demo
 
 ---
 
@@ -512,4 +329,3 @@ $random = 2
 ### Thank you!
 
 * Too many sources, see Sources.txt
-* Jan, Johannes

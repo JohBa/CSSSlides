@@ -1,2 +1,47 @@
 .flexcontainer { display: flex; flex-direction: row; flex-wrap: wrap; }
-.flexblock { background: green; border: 1px solid white !important; width: 200px; height: 200px; margin: 100px;}
+.flexcontainer__block { 
+    background: green; 
+    border: 1px solid white !important;
+    width: 200px; 
+    height: 200px; 
+    margin: 100px;
+}
+.flexcontainer__block--red { background: red }
+
+.container {
+    justify-content: center;
+    width: 100%;
+}
+
+.container__text { 
+    font-size: 1.5 em;
+    color: blue;
+}
+
+/* [class] {
+outline: 5px solid lightgrey;
+}
+
+[class*="__"] {
+outline: 5px solid grey;
+}
+
+
+[class*="--"] {
+outline: 5px solid darkgrey;
+}
+
+[class^="o-"],
+[class*=" o-"] {
+outline: 5px solid orange;
+}
+
+
+[class^="c-"],
+[class*=" c-"] {
+outline: 5px solid cyan;
+}
+
+[class*="@"] {
+outline: 5px solid rosybrown;
+} */
