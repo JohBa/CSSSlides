@@ -1,0 +1,39 @@
+body.sample1 {background-color: powderblue;}
+h1.sample1   {color: blue;}
+p.sample1   {color: red;}
+
+#firstname {
+    color: yellow;
+}
+
+.widget {
+    background-color: purple;
+}
+
+.widget2 {
+    border: 1px dashed white !important;
+}
+
+div .inside {
+    background-color: green;
+}
+
+.parent { border: 1px solid white !important }
+.parent > .child { background-color: green; }
+
+.hoversample:hover { background-color: green; }
+
+.aftersample::after { content: "after"; }
+.beforesample::before { content: "before"; }
+
+.altlist li:nth-child(2n) { background-color: gray; }
+
+.transition { width: 100px;height: 100px; background: red;transition: width 2s;  -webkit-transition: width 2s; /* Safari 3.1 to 6.0 */ }
+.transition:hover { width: 300px; }
+
+.inline { display: inline; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+
+.flexcontainer { display: flex; flex-direction: row; flex-wrap: wrap; }
+.flexblock { background: green; border: 1px solid white !important; width: 100px; height: 20px;}
