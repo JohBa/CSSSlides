@@ -97,7 +97,7 @@ Don't mimic the DOM-Tree!
 ```html
 <header class="block">
     <h1 class="block__elem1">
-        <a class="block__elem2" href="/">clubmate.fi</a>
+        <a class="block__elem1__elem2" href="/">clubmate.fi</a>
     </h1>
 </header>
 ```
@@ -207,7 +207,7 @@ Create the BEM-Tree!
 
 ---
 
-### JavaScrip Hooks?
+### JavaScript Hooks?
 
 * CSS Classes/Ids as hooks for JavaScript code
 
